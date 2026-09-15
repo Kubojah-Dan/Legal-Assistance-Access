@@ -9,7 +9,11 @@ from starlette.responses import JSONResponse
 
 from app.core.config import get_settings
 from app.middleware.logging import StructuredLoggingMiddleware
+from app.core.database import init_db
 from app.routers.health import router as health_router
+from app.routers.sources import router as sources_router
+from app.routers.corpus import router as corpus_router
+from app.routers.rag import router as rag_router
 
 # Configure root logger
 settings = get_settings()
@@ -24,7 +28,11 @@ logger = logging.getLogger("nyayamitra")
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Initializing NyayaMitra Legal Access Platform Backend...")
-    # Initial startup tasks (e.g. database connect, source registry verify)
+    try:
+        await init_db()
+        logger.info("Database tables verified.")
+    except Exception as exc:
+        logger.warning(f"Database initialization warning: {exc}")
     yield
     logger.info("Shutting down NyayaMitra Backend...")
 
@@ -68,6 +76,9 @@ app.add_middleware(SecurityHeadersMiddleware)
 
 # Mount versioned API routers
 app.include_router(health_router, prefix=settings.API_V1_PREFIX)
+app.include_router(sources_router, prefix=settings.API_V1_PREFIX)
+app.include_router(corpus_router, prefix=settings.API_V1_PREFIX)
+app.include_router(rag_router, prefix=settings.API_V1_PREFIX)
 
 
 @app.get("/")
