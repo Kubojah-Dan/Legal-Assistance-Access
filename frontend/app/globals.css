@@ -1,0 +1,363 @@
+:root {
+  --primary-navy: #0f2744;
+  --primary-navy-dark: #0a1b30;
+  --primary-navy-light: #1b3d68;
+  --accent-gold: #c68a35;
+  --accent-gold-light: #fef5e7;
+  --saffron: #e65c00;
+  --saffron-light: #fff3e6;
+  --success-green: #1e7e34;
+  --success-bg: #eafaf1;
+  --warning-amber: #d97706;
+  --warning-bg: #fffbeb;
+  --danger-red: #b91c1c;
+  --danger-bg: #fef2f2;
+  --neutral-bg: #f8fafc;
+  --neutral-card: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+  background-color: var(--neutral-bg);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Accessibility Focus Rings */
+:focus-visible {
+  outline: 3px solid var(--accent-gold);
+  outline-offset: 2px;
+}
+
+/* Header & Navigation */
+.nm-header {
+  background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-navy-dark) 100%);
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+  border-bottom: 3px solid var(--accent-gold);
+}
+
+.nm-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nm-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.nm-emblem {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--primary-navy-dark);
+  font-size: 1.25rem;
+  border: 2px solid #ffffff;
+}
+
+.nm-title-group h1 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.nm-title-group p {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+}
+
+.nm-lang-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nm-lang-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Container */
+.nm-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* Legal Disclaimer Banner */
+.nm-disclaimer-banner {
+  background-color: var(--accent-gold-light);
+  border-left: 4px solid var(--accent-gold);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: #78350f;
+}
+
+/* Hero Section */
+.nm-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.nm-hero h2 {
+  font-size: 2.25rem;
+  color: var(--primary-navy);
+  margin-bottom: 0.75rem;
+  font-weight: 800;
+}
+
+.nm-hero p {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+}
+
+.nm-badge-current-law {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--success-bg);
+  color: var(--success-green);
+  border: 1px solid #bbf7d0;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* 3 Core Job Cards */
+.nm-core-jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 3rem;
+}
+
+.nm-job-card {
+  background: var(--neutral-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nm-job-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent-gold);
+}
+
+.nm-job-card-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+}
+
+.nm-tag-intake {
+  background: var(--saffron-light);
+  color: var(--saffron);
+}
+
+.nm-tag-rights {
+  background: #eff6ff;
+  color: var(--primary-navy-light);
+}
+
+.nm-tag-doc {
+  background: var(--success-bg);
+  color: var(--success-green);
+}
+
+.nm-job-card h3 {
+  font-size: 1.4rem;
+  color: var(--primary-navy);
+  margin-bottom: 0.5rem;
+}
+
+.nm-job-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.nm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.nm-btn-primary {
+  background: var(--primary-navy);
+  color: #ffffff;
+}
+
+.nm-btn-primary:hover {
+  background: var(--primary-navy-light);
+}
+
+.nm-btn-secondary {
+  background: #f1f5f9;
+  color: var(--primary-navy);
+}
+
+.nm-btn-secondary:hover {
+  background: #e2e8f0;
+}
+
+/* Secondary Services Grid */
+.nm-secondary-section {
+  background: var(--neutral-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.nm-secondary-section h3 {
+  font-size: 1.3rem;
+  color: var(--primary-navy);
+  margin-bottom: 1.25rem;
+}
+
+.nm-secondary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.nm-service-item {
+  border: 1px solid var(--border-color);
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  background: #fcfdfe;
+}
+
+.nm-service-item h4 {
+  font-size: 1.05rem;
+  color: var(--primary-navy);
+  margin-bottom: 0.4rem;
+}
+
+.nm-service-item p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Footer */
+.nm-footer {
+  background: var(--primary-navy-dark);
+  color: #94a3b8;
+  padding: 2.5rem 1.5rem;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nm-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.nm-footer-col h5 {
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.nm-footer-col ul {
+  list-style: none;
+}
+
+.nm-footer-col li {
+  margin-bottom: 0.5rem;
+}
+
+.nm-footer-col a {
+  color: #94a3b8;
+  text-decoration: none;
+}
+
+.nm-footer-col a:hover {
+  color: var(--accent-gold);
+}
+
+.nm-footer-bottom {
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .nm-hero h2 {
+    font-size: 1.75rem;
+  }
+  .nm-core-jobs-grid {
+    grid-template-columns: 1fr;
+  }
+}
