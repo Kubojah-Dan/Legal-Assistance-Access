@@ -9,6 +9,7 @@ from starlette.responses import JSONResponse
 
 from app.core.config import get_settings
 from app.middleware.logging import StructuredLoggingMiddleware
+from app.middleware.security import SecurityHardeningMiddleware
 from app.core.database import init_db
 from app.routers.health import router as health_router
 from app.routers.sources import router as sources_router
@@ -17,6 +18,7 @@ from app.routers.rag import router as rag_router
 from app.routers.intake import router as intake_router
 from app.routers.documents import router as documents_router
 from app.routers.generator import router as generator_router
+from app.routers.escalation import router as escalation_router
 
 # Configure root logger
 settings = get_settings()
@@ -77,6 +79,9 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
 
 app.add_middleware(SecurityHeadersMiddleware)
 
+# Security Hardening & Rate Limiting Middleware
+app.add_middleware(SecurityHardeningMiddleware)
+
 # Mount versioned API routers
 app.include_router(health_router, prefix=settings.API_V1_PREFIX)
 app.include_router(sources_router, prefix=settings.API_V1_PREFIX)
@@ -85,6 +90,7 @@ app.include_router(rag_router, prefix=settings.API_V1_PREFIX)
 app.include_router(intake_router, prefix=settings.API_V1_PREFIX)
 app.include_router(documents_router, prefix=settings.API_V1_PREFIX)
 app.include_router(generator_router, prefix=settings.API_V1_PREFIX)
+app.include_router(escalation_router, prefix=settings.API_V1_PREFIX)
 
 
 @app.get("/")
