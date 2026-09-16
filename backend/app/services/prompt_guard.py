@@ -30,7 +30,7 @@ class PromptGuardService:
         # 1. System Prompt Overrides & Instruction Reset
         (r"ignore\s+(?:all\s+)?(?:previous|prior|above)\s+(?:instructions|directions|rules|prompts)", "SYSTEM_OVERRIDE_IGNORE_INSTRUCTIONS"),
         (r"disregard\s+(?:all\s+)?(?:previous|prior|system)\s+(?:rules|instructions|constraints)", "SYSTEM_OVERRIDE_DISREGARD_RULES"),
-        (r"forget\s+(?:everything\s+)?(?:you\s+were\s+told|your\s+instructions|system\s+prompt)", "SYSTEM_OVERRIDE_FORGET"),
+        (r"forget\s+(?:all\s+)?(?:previous|prior|everything)?\s*(?:safety\s+)?(?:rules|instructions|prompts|you\s+were\s+told)", "SYSTEM_OVERRIDE_FORGET"),
         (r"override\s+(?:system|safety|security)\s+(?:prompt|instructions|settings)", "SYSTEM_OVERRIDE_EXPLICIT"),
         
         # 2. Jailbreak Modes & Roleplay Escapes
@@ -42,7 +42,7 @@ class PromptGuardService:
         # 3. Delimiter Injection & Special Tokens
         (r"<\s*\|\s*(?:im_start|im_end|system|user|assistant)\s*\|\s*>", "SPECIAL_TOKEN_DELIMITER_INJECTION"),
         (r"\[\s*\/?(?:INST|SYS|SYSTEM)\s*\]", "SPECIAL_TOKEN_BRACKET_INJECTION"),
-        (r"---+\s*(?:BEGIN|START)\s+(?:SYSTEM|PROMPT|INSTRUCTIONS)\s*---+", "DELIMITER_HEADER_INJECTION"),
+        (r"---+\s*(?:BEGIN|START)\s+(?:SYSTEM|PROMPT|INSTRUCTIONS|SYSTEM\s+INSTRUCTIONS)\s*---+", "DELIMITER_HEADER_INJECTION"),
         
         # 4. System Prompt Exfiltration
         (r"(?:print|output|show|reveal|display|leak)\s+(?:your\s+)?(?:system\s+prompt|initial\s+instructions|hidden\s+rules|developer\s+prompt)", "PROMPT_EXFILTRATION_ATTEMPT"),

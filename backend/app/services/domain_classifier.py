@@ -48,10 +48,24 @@ _DOMAIN_RULES: list[dict] = [
             "e-commerce", "online purchase", "ecommerce", "cheating by seller",
             "overcharging", "medical negligence", "bank complaint", "insurance claim",
             "consumer forum", "consumer court", "e-daakhil", "ncdrc", "district commission",
+            "flipkart", "amazon", "return reject", "sabun nikla", "order", "parcel", "delivery",
         ],
         "keywords_hi": [
             "खराब सामान", "धोखाधड़ी", "वापसी", "रिफंड", "वारंटी", "उपभोक्ता",
-            "शिकायत", "बीमा", "बैंक", "ऑनलाइन खरीद",
+            "शिकायत", "बीमा", "बैंक", "ऑनलाइन खरीद", "फ्रिज", "खराब हो गया",
+        ],
+    },
+    {
+        "domain": "LEGAL_AID",
+        "keywords_en": [
+            "legal aid", "free lawyer", "free legal aid", "dlsa", "slsa", "nalsa",
+            "section 12", "court lawyer", "free advocate", "government lawyer",
+            "daily wage", "construction worker", "jail legal aid", "under trial",
+            "undertrial", "tele-law",
+        ],
+        "keywords_hi": [
+            "मुफ्त वकील", "सरकारी वकील", "कानूनी सहायता", "निःशुल्क", "डीएलएसए", "नालसा",
+            "मुफ्त में मिलता है", "मुफ्त में वकील", "सरकारी वकील मुफ्त",
         ],
     },
     {

@@ -86,9 +86,12 @@ class CitationVerifier:
             )
 
         act_record = self._seed_data[matched_act_code]
+        clean_sec_base = re.sub(r"\(.*?\)", "", clean_sec).strip()
         # Match section number
         for sec in act_record["sections"]:
-            if sec["section_number"] == clean_sec:
+            sec_num = sec["section_number"].strip()
+            sec_num_base = re.sub(r"\(.*?\)", "", sec_num).strip()
+            if sec_num == clean_sec or sec_num == clean_sec_base or sec_num_base == clean_sec_base:
                 return CitationVerificationResult(
                     is_valid=True,
                     act_name=act_record["act_name"],

@@ -401,13 +401,19 @@ class EscalationService:
             if urgency != "CRITICAL":
                 urgency = "HIGH"
 
-        # 4. Imminent Court Hearing or Ex-Parte Order Risk
+        # 4. Legal Aid and Indigency / Custody Triggers (Section 12 LSAA 1987)
+        if domain == "LEGAL_AID" or re.search(r"\b(?:legal aid|free lawyer|government lawyer|free advocate|jail|prison|awaiting trial|undertrial|daily wage|construction worker|slsa|dlsa|nalsa|tele-law|15100|मुफ्त वकील|सरकारी वकील)\b", text_to_scan):
+            reasons.append("Legal aid request or statutory socio-economic criteria identified under Section 12 LSAA 1987.")
+            if urgency == "LOW":
+                urgency = "MEDIUM"
+
+        # 5. Imminent Court Hearing or Ex-Parte Order Risk
         if re.search(r"\b(?:summons|court tomorrow|appearance on|ex-parte|warrant|non-bailable)\b", text_to_scan):
             reasons.append("Imminent judicial hearing date or court summons detected; non-appearance may lead to adverse orders.")
             if urgency != "CRITICAL":
                 urgency = "HIGH"
 
-        # 5. Low Confidence or Ambiguity
+        # 6. Low Confidence or Ambiguity
         if rag_confidence < 0.65:
             reasons.append("Statutory complexity or factual ambiguity requires customized legal advice from a qualified advocate.")
             if urgency == "LOW":
