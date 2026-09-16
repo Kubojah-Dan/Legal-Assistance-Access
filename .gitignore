@@ -84,3 +84,9 @@ uploads/
 temp/
 tmp/
 scratch/
+
+# Internal Phase Reports & Personal Reference Docs
+docs/phases/
+evals/runs/
+*.tmp
+*.bak
