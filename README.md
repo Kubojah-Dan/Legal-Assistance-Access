@@ -14,7 +14,7 @@
 [![Privacy: DPDPA 2023](https://img.shields.io/badge/Privacy-DPDPA%202023%20Aligned-blueviolet.svg)](docs/SAFETY_POLICY.md)
 
 <p align="center">
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3kza2ZqcmsxMmU5cnhmMnR2ZTZkNmhuc3V6NWF5cHF2ZndqYm5leSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26AHONQ79FdWZhAI0/giphy.gif" alt="NyayaMitra Legal Assistance Banner" width="680" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" />
+  <img src="docs/images/nyayamitra_hero_banner.jpg" alt="NyayaMitra — AI Legal Assistance Platform for India" width="680" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" />
 </p>
 
 > **NyayaMitra** is a citizen-first legal assistance platform designed for India's 1.4 billion people. Grounded strictly in active Union enactments—incorporating the 2024 criminal law transitions (**Bharatiya Nyaya Sanhita**, **Bharatiya Nagarik Suraksha Sanhita**, and **Bharatiya Sakshya Adhiniyam**)—NyayaMitra empowers ordinary citizens to understand legal problems in plain language (Hindi & English), calculate strict court deadlines, draft deterministic dispute documents, and access 100% free legal aid under Section 12 of the Legal Services Authorities Act, 1987.
@@ -254,7 +254,8 @@ NyayaMitra requires zero obscure configuration. The following variables can be a
 ## 📱 Application Modules Walkthrough
 
 <div align="center">
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjdhY2k2aDk2OXdpaWZhMW15bnR2OTVzMTBkaWRvbnJkZ2pneHptOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPnAiaMCws8nOsE/giphy.gif" alt="Legal Intake Flow Demo" width="600" style="border-radius: 10px;" />
+  <img src="docs/images/nyayamitra_modules_overview.jpg" alt="NyayaMitra — 5 Core Modules Overview" width="680" style="border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.12);" />
+  <br/><sub><em>All 5 citizen-facing modules: Guided Intake · Rights & Timelines · Notice Scanner · Document Generator · Legal Aid</em></sub>
 </div>
 
 ### 1. Samjho Mera Problem (Guided Intake)
