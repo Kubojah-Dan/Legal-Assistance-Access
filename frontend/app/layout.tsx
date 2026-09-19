@@ -1,5 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import {
+  Landmark,
+  AlertTriangle,
+  Users,
+  Shield,
+  Phone,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "NyayaMitra (न्यायमित्र) — AI for Legal Assistance & Access (India)",
@@ -25,7 +32,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
       </head>
@@ -36,24 +43,45 @@ export default function RootLayout({
 
         {/* 24x7 Emergency Helpline Ticker */}
         <div className="nm-emergency-bar" role="region" aria-label="Emergency Legal Helplines">
-          <span>🏛️ <strong>NALSA Legal Aid:</strong> <a href="tel:15100">15100</a> (Toll-Free, 24x7)</span>
-          <span>🚨 <strong>Police Emergency:</strong> <a href="tel:112">112</a></span>
-          <span>👩 <strong>Women in Distress:</strong> <a href="tel:181">181</a></span>
-          <span>💻 <strong>Cyber Crime:</strong> <a href="tel:1930">1930</a></span>
+          <span>
+            <Landmark size={14} aria-hidden="true" />
+            <strong>NALSA Legal Aid:</strong> <a href="tel:15100">15100</a> (Toll-Free, 24x7)
+          </span>
+          <span>
+            <AlertTriangle size={14} aria-hidden="true" />
+            <strong>Police Emergency:</strong> <a href="tel:112">112</a>
+          </span>
+          <span>
+            <Users size={14} aria-hidden="true" />
+            <strong>Women in Distress:</strong> <a href="tel:181">181</a>
+          </span>
+          <span>
+            <Shield size={14} aria-hidden="true" />
+            <strong>Cyber Crime:</strong> <a href="tel:1930">1930</a>
+          </span>
         </div>
 
         <header className="nm-header" role="banner">
           <div className="nm-header-inner">
             <a href="/" className="nm-brand" aria-label="NyayaMitra Home">
-              <div className="nm-emblem" aria-hidden="true">न्या</div>
+              <div className="nm-emblem" aria-hidden="true">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/nyayamitra-logo.jpg"
+                  alt="NyayaMitra Logo"
+                  width={44}
+                  height={44}
+                  style={{ borderRadius: "50%", objectFit: "cover", display: "block" }}
+                />
+              </div>
               <div className="nm-title-group">
                 <h1>NyayaMitra</h1>
-                <p>Legal Assistance & Access Platform • भारत</p>
+                <p>Legal Rights For a Stronger Tomorrow</p>
               </div>
             </a>
             <div className="nm-header-controls">
               <span className="nm-badge-current-law">
-                ● Current Law (BNS/BNSS 2024)
+                <span className="nm-badge-dot" aria-hidden="true"></span> Current Law (BNS/BNSS 2024)
               </span>
             </div>
           </div>

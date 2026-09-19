@@ -9,6 +9,7 @@ from starlette.responses import JSONResponse
 
 from app.core.config import get_settings
 from app.middleware.logging import StructuredLoggingMiddleware
+from app.middleware.observability import ObservabilityMiddleware
 from app.middleware.security import SecurityHardeningMiddleware
 from app.core.database import init_db
 from app.routers.health import router as health_router
@@ -81,6 +82,9 @@ app.add_middleware(SecurityHeadersMiddleware)
 
 # Security Hardening & Rate Limiting Middleware
 app.add_middleware(SecurityHardeningMiddleware)
+
+# Observability & Correlation ID Middleware
+app.add_middleware(ObservabilityMiddleware)
 
 # Mount versioned API routers
 app.include_router(health_router, prefix=settings.API_V1_PREFIX)

@@ -12,20 +12,21 @@
   --danger-light: #fef2f2;
   --warning-amber: #d97706;
   --warning-light: #fffbeb;
-  --neutral-bg: #f8fafc;
+  --neutral-bg: #f4f6fb;
   --neutral-card: #ffffff;
-  --neutral-subtle: #f1f5f9;
+  --neutral-subtle: #eef2f8;
   --text-main: #0f172a;
   --text-muted: #64748b;
-  --border-color: #e2e8f0;
+  --border-color: #dde3ee;
   --border-focus: #e2a03f;
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 10px 25px -5px rgba(11, 25, 44, 0.1), 0 8px 10px -6px rgba(11, 25, 44, 0.05);
-  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 25px -5px rgba(11, 25, 44, 0.09), 0 8px 10px -6px rgba(11, 25, 44, 0.04);
+  --font-family: "Inter", "Noto Sans Devanagari", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Outfit", "Inter", system-ui, sans-serif;
 }
 
 * {
@@ -38,11 +39,21 @@ html, body {
   font-family: var(--font-family);
   background-color: var(--neutral-bg);
   color: var(--text-main);
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
 /* Accessibility Focus & Skip Link */
@@ -71,7 +82,7 @@ html, body {
 .nm-header {
   background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-navy-dark) 100%);
   color: #ffffff;
-  padding: 1rem 1.5rem;
+  padding: 0.9rem 1.5rem;
   border-bottom: 3px solid var(--accent-gold);
   box-shadow: var(--shadow-md);
   position: sticky;
@@ -92,36 +103,39 @@ html, body {
 .nm-brand {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.9rem;
   text-decoration: none;
   color: #ffffff;
 }
 
 .nm-emblem {
-  width: 44px;
-  height: 44px;
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  color: #ffffff;
-  font-size: 1.35rem;
-  border: 2px solid #ffffff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  border: 2px solid rgba(255,255,255,0.8);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #fff;
 }
 
 .nm-title-group h1 {
-  font-size: 1.45rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
 .nm-title-group p {
-  font-size: 0.82rem;
-  color: #cbd5e1;
+  font-size: 0.78rem;
+  color: #c4cfe0;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-top: 1px;
 }
 
 .nm-header-controls {
@@ -134,26 +148,39 @@ html, body {
 .nm-badge-current-law {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.45rem;
   background: rgba(16, 185, 129, 0.15);
   color: #34d399;
   border: 1px solid rgba(16, 185, 129, 0.3);
-  padding: 0.3rem 0.75rem;
+  padding: 0.3rem 0.85rem;
   border-radius: 9999px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.nm-badge-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #34d399;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .nm-btn-lang {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   padding: 0.4rem 0.9rem;
   border-radius: var(--radius-sm);
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: 0.83rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .nm-btn-lang:hover {
@@ -164,16 +191,23 @@ html, body {
 
 /* Emergency Helpline Bar */
 .nm-emergency-bar {
-  background: linear-gradient(90deg, #991b1b, #b91c1c);
+  background: linear-gradient(90deg, #7f1d1d, #991b1b);
   color: #ffffff;
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
+  padding: 0.45rem 1rem;
+  font-size: 0.82rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
   flex-wrap: wrap;
   font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.nm-emergency-bar span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .nm-emergency-bar a {
@@ -194,22 +228,28 @@ html, body {
 /* Disclaimer Banner */
 .nm-disclaimer-banner {
   background: var(--accent-gold-light);
-  border-left: 5px solid var(--accent-gold);
+  border-left: 4px solid var(--accent-gold);
   padding: 0.85rem 1.25rem;
   border-radius: var(--radius-sm);
   margin-bottom: 1.5rem;
   display: flex;
   gap: 0.75rem;
   align-items: flex-start;
-  font-size: 0.88rem;
+  font-size: 0.87rem;
   color: #78350f;
   box-shadow: var(--shadow-sm);
+}
+
+.nm-disclaimer-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--accent-gold);
 }
 
 /* Main Navigation Tabs */
 .nm-nav-tabs {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.35rem;
   border-bottom: 2px solid var(--border-color);
   margin-bottom: 1.5rem;
   overflow-x: auto;
@@ -220,14 +260,15 @@ html, body {
 .nm-tab-btn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
+  gap: 0.45rem;
+  padding: 0.7rem 1.15rem;
   background: transparent;
   border: none;
   border-bottom: 3px solid transparent;
   color: var(--text-muted);
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.2s ease;
@@ -263,17 +304,19 @@ html, body {
 }
 
 .nm-workspace-header h2 {
-  font-size: 1.4rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
   color: var(--primary-navy);
   margin-bottom: 0.35rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-weight: 700;
 }
 
 .nm-workspace-header p {
   color: var(--text-muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
 }
 
 /* Buttons */
@@ -281,15 +324,17 @@ html, body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.25rem;
-  font-size: 0.92rem;
-  font-weight: 700;
+  gap: 0.45rem;
+  padding: 0.6rem 1.2rem;
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  font-weight: 600;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
+  letter-spacing: 0.01em;
 }
 
 .nm-btn-primary {
@@ -310,7 +355,7 @@ html, body {
 }
 
 .nm-btn-secondary:hover {
-  background: #e2e8f0;
+  background: #dde3ee;
 }
 
 .nm-btn-gold {
@@ -333,8 +378,8 @@ html, body {
 }
 
 .nm-btn-sm {
-  padding: 0.4rem 0.75rem;
-  font-size: 0.82rem;
+  padding: 0.38rem 0.75rem;
+  font-size: 0.8rem;
 }
 
 /* Chat & Intake Stream */
@@ -352,11 +397,11 @@ html, body {
 }
 
 .nm-chat-bubble {
-  padding: 0.9rem 1.2rem;
+  padding: 0.9rem 1.15rem;
   border-radius: var(--radius-md);
   max-width: 80%;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 0.93rem;
+  line-height: 1.55;
   box-shadow: var(--shadow-sm);
 }
 
@@ -380,18 +425,19 @@ html, body {
 
 .nm-form-label {
   display: block;
-  font-weight: 700;
-  font-size: 0.88rem;
+  font-weight: 600;
+  font-size: 0.85rem;
   margin-bottom: 0.4rem;
   color: var(--text-main);
+  letter-spacing: 0.01em;
 }
 
 .nm-input, .nm-select, .nm-textarea {
   width: 100%;
-  padding: 0.65rem 0.85rem;
+  padding: 0.6rem 0.85rem;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-family: inherit;
   color: var(--text-main);
   background: #ffffff;
@@ -400,7 +446,7 @@ html, body {
 
 .nm-input:focus, .nm-select:focus, .nm-textarea:focus {
   border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px rgba(226, 160, 63, 0.2);
+  box-shadow: 0 0 0 3px rgba(226, 160, 63, 0.18);
   outline: none;
 }
 
@@ -426,7 +472,7 @@ html, body {
   background: #ffffff;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1.25rem;
+  padding: 1.2rem;
   box-shadow: var(--shadow-sm);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -443,8 +489,9 @@ html, body {
   gap: 0.35rem;
   padding: 0.25rem 0.65rem;
   border-radius: 9999px;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .nm-badge-verified {
@@ -480,6 +527,7 @@ html, body {
   left: 0.75rem;
   width: 3px;
   background: var(--accent-gold);
+  border-radius: 2px;
 }
 
 .nm-timeline-step {
@@ -517,10 +565,12 @@ html, body {
 }
 
 .nm-footer-col h5 {
+  font-family: var(--font-display);
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 0.98rem;
   margin-bottom: 0.85rem;
   font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .nm-footer-col ul {
@@ -529,7 +579,7 @@ html, body {
 
 .nm-footer-col ul li {
   margin-bottom: 0.4rem;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
 }
 
 .nm-footer-col a {
@@ -546,7 +596,7 @@ html, body {
   margin: 0 auto;
   border-top: 1px solid #334155;
   padding-top: 1.25rem;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   text-align: center;
   color: #94a3b8;
 }

@@ -1,6 +1,35 @@
 "use client";
 
 import React, { useState } from "react";
+import {
+  MessageSquare,
+  Scale,
+  FileText,
+  FilePen,
+  Landmark,
+  Globe,
+  Mic,
+  Home,
+  ShoppingCart,
+  ClipboardList,
+  AlertTriangle,
+  ArrowRight,
+  BookOpen,
+  Clock,
+  CheckCircle,
+  Lock,
+  Users,
+  CalendarDays,
+  Download,
+  Search,
+  Settings,
+  MapPin,
+  Phone,
+  Monitor,
+  ShieldCheck,
+  Info,
+  ChevronRight,
+} from "lucide-react";
 
 type Language = "en" | "hi";
 
@@ -93,8 +122,8 @@ export default function HomePage() {
     let botReply = "";
     if (urgent) {
       botReply = lang === "hi"
-        ? "⚠️ तत्काल सहायता सूचना: आपने पुलिस कार्रवाई या गिरफ्तारी का उल्लेख किया है। कृपया 24x7 राष्ट्रीय कानूनी सहायता हेल्पलाइन 15100 पर कॉल करें।"
-        : "⚠️ Immediate Assistance Notice: You mentioned police action/detention. Please call the 24x7 National Legal Aid Helpline at 15100 for immediate lawyer assistance.";
+        ? "⚠ तत्काल सहायता सूचना: आपने पुलिस कार्रवाई या गिरफ्तारी का उल्लेख किया है। कृपया 24x7 राष्ट्रीय कानूनी सहायता हेल्पलाइन 15100 पर कॉल करें।"
+        : "Immediate Assistance Notice: You mentioned police action/detention. Please call the 24x7 National Legal Aid Helpline at 15100 for immediate lawyer assistance.";
     } else if (dom === "TENANCY") {
       botReply = lang === "hi"
         ? "किरायेदारी मामला पहचाना गया: क्या आपको मकान मालिक से कोई लिखित नोटिस प्राप्त हुआ है? आप 'मेरे अधिकार' टैब में अपने कानूनी अधिकार देख सकते हैं।"
@@ -207,7 +236,9 @@ export default function HomePage() {
     <div className="nm-container">
       {/* Disclaimer Banner */}
       <aside className="nm-disclaimer-banner" role="alert">
-        <span style={{ fontSize: "1.25rem" }}>⚖️</span>
+        <span className="nm-disclaimer-icon">
+          <Scale size={18} aria-hidden="true" />
+        </span>
         <div>
           <strong>{lang === "hi" ? "आधिकारिक विधिक सूचना:" : "Official Legal Information Notice:"}</strong>{" "}
           {lang === "hi"
@@ -220,10 +251,10 @@ export default function HomePage() {
       <section className="nm-workspace" style={{ padding: "1.25rem", marginBottom: "1rem", background: "linear-gradient(135deg, #0b192c 0%, #1e3e62 100%)", color: "#fff" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
           <div>
-            <h2 style={{ color: "#fff", fontSize: "1.35rem", marginBottom: "0.25rem" }}>
+            <h2 style={{ color: "#fff", fontSize: "1.3rem", marginBottom: "0.25rem", fontFamily: "var(--font-display)" }}>
               {lang === "hi" ? "नागरिक विधिक सेवा केंद्र" : "Citizen Legal Empowerment Dashboard"}
             </h2>
-            <p style={{ color: "#cbd5e1", fontSize: "0.85rem" }}>
+            <p style={{ color: "#cbd5e1", fontSize: "0.83rem" }}>
               {lang === "hi" ? "भारतीय कानून 2024 (BNS/BNSS/BSA), आरटीआई एवं उपभोक्ता संरक्षण पर आधारित" : "Grounded in Bharatiya Sanhitas 2024, RTI Act 2005, and Consumer Protection Act 2019"}
             </p>
           </div>
@@ -232,7 +263,8 @@ export default function HomePage() {
             onClick={() => setLang(lang === "en" ? "hi" : "en")}
             aria-label="Toggle language"
           >
-            🌐 {lang === "en" ? "हिंदी में बदलें" : "Switch to English"}
+            <Globe size={14} aria-hidden="true" />
+            {lang === "en" ? "हिंदी में बदलें" : "Switch to English"}
           </button>
         </div>
       </section>
@@ -245,7 +277,8 @@ export default function HomePage() {
           role="tab"
           aria-selected={activeTab === "intake"}
         >
-          🗣️ {lang === "hi" ? "1. समझो मेरा प्रॉब्लम" : "1. Guided Intake"}
+          <MessageSquare size={15} aria-hidden="true" />
+          {lang === "hi" ? "1. समझो मेरा प्रॉब्लम" : "1. Guided Intake"}
         </button>
         <button
           className={`nm-tab-btn ${activeTab === "rights" ? "active" : ""}`}
@@ -253,7 +286,8 @@ export default function HomePage() {
           role="tab"
           aria-selected={activeTab === "rights"}
         >
-          ⚖️ {lang === "hi" ? "2. मेरे अधिकार" : "2. Rights & Timelines"}
+          <Scale size={15} aria-hidden="true" />
+          {lang === "hi" ? "2. मेरे अधिकार" : "2. Rights & Timelines"}
         </button>
         <button
           className={`nm-tab-btn ${activeTab === "scanner" ? "active" : ""}`}
@@ -261,7 +295,8 @@ export default function HomePage() {
           role="tab"
           aria-selected={activeTab === "scanner"}
         >
-          📄 {lang === "hi" ? "3. नोटिस स्कैनर व तारीखें" : "3. Document Scanner"}
+          <FileText size={15} aria-hidden="true" />
+          {lang === "hi" ? "3. नोटिस स्कैनर व तारीखें" : "3. Document Scanner"}
         </button>
         <button
           className={`nm-tab-btn ${activeTab === "generator" ? "active" : ""}`}
@@ -269,7 +304,8 @@ export default function HomePage() {
           role="tab"
           aria-selected={activeTab === "generator"}
         >
-          ✍️ {lang === "hi" ? "4. मेरा डाक्यूमेंट" : "4. Mera Document"}
+          <FilePen size={15} aria-hidden="true" />
+          {lang === "hi" ? "4. मेरा डाक्यूमेंट" : "4. Mera Document"}
         </button>
         <button
           className={`nm-tab-btn ${activeTab === "escalation" ? "active" : ""}`}
@@ -277,7 +313,8 @@ export default function HomePage() {
           role="tab"
           aria-selected={activeTab === "escalation"}
         >
-          🏛️ {lang === "hi" ? "5. न्याय सहायता (NALSA/DLSA)" : "5. Legal Aid & Helpline"}
+          <Landmark size={15} aria-hidden="true" />
+          {lang === "hi" ? "5. न्याय सहायता (NALSA/DLSA)" : "5. Legal Aid & Helpline"}
         </button>
       </nav>
 
@@ -287,7 +324,10 @@ export default function HomePage() {
       {activeTab === "intake" && (
         <section className="nm-workspace" aria-labelledby="intake-heading">
           <div className="nm-workspace-header">
-            <h2 id="intake-heading">🗣️ {lang === "hi" ? "समझो मेरा प्रॉब्लम (Guided Intake)" : "Samjho Mera Problem (Guided Intake)"}</h2>
+            <h2 id="intake-heading">
+              <MessageSquare size={20} aria-hidden="true" />
+              {lang === "hi" ? "समझो मेरा प्रॉब्लम (Guided Intake)" : "Samjho Mera Problem (Guided Intake)"}
+            </h2>
             <p>
               {lang === "hi"
                 ? "अपनी भाषा में समस्या बताएं। न्यायमित्र कानूनी श्रेणी पहचानेगा और आपको सही अधिकार बताएगा।"
@@ -296,20 +336,24 @@ export default function HomePage() {
           </div>
 
           <div style={{ display: "flex", gap: "0.5rem", marginBottom: "1rem", flexWrap: "wrap" }}>
-            <span style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--text-muted)", alignSelf: "center" }}>
+            <span style={{ fontSize: "0.83rem", fontWeight: 600, color: "var(--text-muted)", alignSelf: "center" }}>
               {lang === "hi" ? "त्वरित उदाहरण:" : "Quick Scenarios:"}
             </span>
             <button className="nm-btn nm-btn-secondary nm-btn-sm" onClick={() => handleSendMessage("Landlord sent illegal eviction notice without 15 days time")}>
-              🏠 {lang === "hi" ? "मकान खाली कराने का नोटिस" : "Landlord Eviction"}
+              <Home size={13} aria-hidden="true" />
+              {lang === "hi" ? "मकान खाली कराने का नोटिस" : "Landlord Eviction"}
             </button>
             <button className="nm-btn nm-btn-secondary nm-btn-sm" onClick={() => handleSendMessage("Bought defective laptop on Flipkart and seller rejected refund")}>
-              🛒 {lang === "hi" ? "खराब सामान व रिफंड" : "Defective Goods"}
+              <ShoppingCart size={13} aria-hidden="true" />
+              {lang === "hi" ? "खराब सामान व रिफंड" : "Defective Goods"}
             </button>
             <button className="nm-btn nm-btn-secondary nm-btn-sm" onClick={() => handleSendMessage("How to file RTI application for road repair in my ward")}>
-              📋 {lang === "hi" ? "सड़क निर्माण हेतु आरटीआई" : "RTI Tender Query"}
+              <ClipboardList size={13} aria-hidden="true" />
+              {lang === "hi" ? "सड़क निर्माण हेतु आरटीआई" : "RTI Tender Query"}
             </button>
             <button className="nm-btn nm-btn-secondary nm-btn-sm" onClick={() => handleSendMessage("Police is threatening arrest in the police station lockup without FIR")}>
-              🚨 {lang === "hi" ? "थाने में गिरफ्तारी का डर" : "Police Arrest Risk"}
+              <AlertTriangle size={13} aria-hidden="true" />
+              {lang === "hi" ? "थाने में गिरफ्तारी का डर" : "Police Arrest Risk"}
             </button>
           </div>
 
@@ -329,11 +373,13 @@ export default function HomePage() {
           {detectedDomain && (
             <div style={{ display: "flex", gap: "0.75rem", marginBottom: "1rem", alignItems: "center", flexWrap: "wrap" }}>
               <span className="nm-badge nm-badge-verified">
-                ✓ {lang === "hi" ? "पहचानी गई श्रेणी:" : "Detected Domain:"} {detectedDomain}
+                <CheckCircle size={12} aria-hidden="true" />
+                {lang === "hi" ? "पहचानी गई श्रेणी:" : "Detected Domain:"} {detectedDomain}
               </span>
               {isUrgent && (
                 <span className="nm-badge nm-badge-critical">
-                  🚨 {lang === "hi" ? "अति-महत्वपूर्ण मामला (Helpline 15100)" : "Urgent Case (Helpline 15100)"}
+                  <AlertTriangle size={12} aria-hidden="true" />
+                  {lang === "hi" ? "अति-महत्वपूर्ण मामला (Helpline 15100)" : "Urgent Case (Helpline 15100)"}
                 </span>
               )}
               <button
@@ -343,7 +389,8 @@ export default function HomePage() {
                   setActiveTab("rights");
                 }}
               >
-                ➡️ {lang === "hi" ? "मेरे अधिकार देखें" : "View My Rights Now"}
+                <ChevronRight size={13} aria-hidden="true" />
+                {lang === "hi" ? "मेरे अधिकार देखें" : "View My Rights Now"}
               </button>
             </div>
           )}
@@ -365,7 +412,8 @@ export default function HomePage() {
               title="Speak your problem (Microphone)"
               aria-label="Simulate voice input"
             >
-              🎙️ {isRecording ? "Listening..." : "Mic"}
+              <Mic size={15} aria-hidden="true" />
+              {isRecording ? "Listening..." : "Mic"}
             </button>
             <button className="nm-btn nm-btn-primary" onClick={() => handleSendMessage()}>
               {lang === "hi" ? "भेजें" : "Send"}
@@ -380,7 +428,10 @@ export default function HomePage() {
       {activeTab === "rights" && (
         <section className="nm-workspace" aria-labelledby="rights-heading">
           <div className="nm-workspace-header">
-            <h2 id="rights-heading">⚖️ {lang === "hi" ? "मेरे अधिकार व समय-सीमा (Mere Adhikaar)" : "Mere Adhikaar (Rights & Timelines)"}</h2>
+            <h2 id="rights-heading">
+              <Scale size={20} aria-hidden="true" />
+              {lang === "hi" ? "मेरे अधिकार व समय-सीमा (Mere Adhikaar)" : "Mere Adhikaar (Rights & Timelines)"}
+            </h2>
             <p>
               {lang === "hi"
                 ? "कक्षा 6–8 के सरल स्तर पर समझाए गए कानूनी अधिकार, आधिकारिक धाराएं व चरणबद्ध समय-सीमा।"
@@ -390,16 +441,17 @@ export default function HomePage() {
 
           <div style={{ display: "flex", gap: "0.5rem", marginBottom: "1.5rem", flexWrap: "wrap" }}>
             {[
-              { id: "TENANCY", label: "🏠 Tenancy & Eviction (किरायेदारी)" },
-              { id: "CONSUMER", label: "🛒 Consumer Protection (उपभोक्ता)" },
-              { id: "RTI", label: "📋 Right to Information (आरटीआई)" },
-              { id: "CRIMINAL", label: "🚨 Criminal & Zero FIR (आपराधिक/एफआईआर)" },
+              { id: "TENANCY", label: "Tenancy & Eviction (किरायेदारी)", icon: <Home size={13} aria-hidden="true" /> },
+              { id: "CONSUMER", label: "Consumer Protection (उपभोक्ता)", icon: <ShoppingCart size={13} aria-hidden="true" /> },
+              { id: "RTI", label: "Right to Information (आरटीआई)", icon: <ClipboardList size={13} aria-hidden="true" /> },
+              { id: "CRIMINAL", label: "Criminal & Zero FIR (आपराधिक/एफआईआर)", icon: <AlertTriangle size={13} aria-hidden="true" /> },
             ].map((d) => (
               <button
                 key={d.id}
                 className={`nm-btn ${rightsDomain === d.id ? "nm-btn-primary" : "nm-btn-secondary"} nm-btn-sm`}
                 onClick={() => setRightsDomain(d.id)}
               >
+                {d.icon}
                 {d.label}
               </button>
             ))}
@@ -408,8 +460,9 @@ export default function HomePage() {
           <div className="nm-grid-2">
             {/* Left Col: Verified Rights */}
             <div>
-              <h3 style={{ fontSize: "1.1rem", marginBottom: "0.75rem", color: "var(--primary-navy)" }}>
-                📖 {lang === "hi" ? "आपके सुरक्षित कानूनी अधिकार" : "Your Statutory Rights"}
+              <h3 style={{ fontSize: "1.05rem", marginBottom: "0.75rem", color: "var(--primary-navy)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                <BookOpen size={17} aria-hidden="true" />
+                {lang === "hi" ? "आपके सुरक्षित कानूनी अधिकार" : "Your Statutory Rights"}
               </h3>
 
               {rightsDomain === "TENANCY" && (
@@ -471,8 +524,9 @@ export default function HomePage() {
 
             {/* Right Col: Verified Citations & Timelines */}
             <div>
-              <h3 style={{ fontSize: "1.1rem", marginBottom: "0.75rem", color: "var(--primary-navy)" }}>
-                ⏳ {lang === "hi" ? "समय-सीमा व आधिकारिक धाराएं" : "Statutory Action Timeline & Citations"}
+              <h3 style={{ fontSize: "1.05rem", marginBottom: "0.75rem", color: "var(--primary-navy)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                <Clock size={17} aria-hidden="true" />
+                {lang === "hi" ? "समय-सीमा व आधिकारिक धाराएं" : "Statutory Action Timeline & Citations"}
               </h3>
 
               <div className="nm-timeline">
@@ -501,7 +555,8 @@ export default function HomePage() {
               {/* Verified Citations Badge Card */}
               <div style={{ background: "var(--neutral-subtle)", padding: "1rem", borderRadius: "var(--radius-sm)", border: "1px solid var(--border-color)" }}>
                 <span className="nm-badge nm-badge-verified" style={{ marginBottom: "0.5rem" }}>
-                  ✓ Official India Code Grounding
+                  <CheckCircle size={11} aria-hidden="true" />
+                  Official India Code Grounding
                 </span>
                 <p style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
                   Verified against Union of India enactments. All statutory citations pass zero-hallucination verification.
@@ -518,7 +573,10 @@ export default function HomePage() {
       {activeTab === "scanner" && (
         <section className="nm-workspace" aria-labelledby="scanner-heading">
           <div className="nm-workspace-header">
-            <h2 id="scanner-heading">📄 {lang === "hi" ? "नोटिस स्कैनर व तारीखें (Deadline Guardian)" : "Document Scanner & Deadline Guardian"}</h2>
+            <h2 id="scanner-heading">
+              <FileText size={20} aria-hidden="true" />
+              {lang === "hi" ? "नोटिस स्कैनर व तारीखें (Deadline Guardian)" : "Document Scanner & Deadline Guardian"}
+            </h2>
             <p>
               {lang === "hi"
                 ? "कोर्ट नोटिस, सम्मन या एफआईआर कॉपी अपलोड करें। तारीखें व पक्षकार समझें और कैलेंडर (.ics) में एक्सपोर्ट करें।"
@@ -527,17 +585,20 @@ export default function HomePage() {
           </div>
 
           <div style={{ display: "flex", gap: "0.5rem", marginBottom: "1rem", flexWrap: "wrap" }}>
-            <span style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--text-muted)", alignSelf: "center" }}>
+            <span style={{ fontSize: "0.83rem", fontWeight: 600, color: "var(--text-muted)", alignSelf: "center" }}>
               {lang === "hi" ? "सैंपल दस्तावेज़ लोड करें:" : "Load Sample Notice:"}
             </span>
             <button className="nm-btn nm-btn-secondary nm-btn-sm" onClick={() => handleAnalyzeSampleDoc("SUMMONS")}>
-              📜 Court Summons (साकेत कोर्ट सम्मन)
+              <FileText size={13} aria-hidden="true" />
+              Court Summons (साकेत कोर्ट सम्मन)
             </button>
             <button className="nm-btn nm-btn-secondary nm-btn-sm" onClick={() => handleAnalyzeSampleDoc("CHEQUE_BOUNCE")}>
-              💳 Cheque Bounce 138 Notice (चेक बाउंस नोटिस)
+              <ClipboardList size={13} aria-hidden="true" />
+              Cheque Bounce 138 Notice (चेक बाउंस नोटिस)
             </button>
             <button className="nm-btn nm-btn-secondary nm-btn-sm" onClick={() => handleAnalyzeSampleDoc("FIR")}>
-              🚨 Cyber Crime FIR Copy (एफआईआर प्रति)
+              <AlertTriangle size={13} aria-hidden="true" />
+              Cyber Crime FIR Copy (एफआईआर प्रति)
             </button>
           </div>
 
@@ -552,7 +613,8 @@ export default function HomePage() {
           </div>
 
           <button className="nm-btn nm-btn-primary" onClick={() => handleAnalyzeSampleDoc("SUMMONS")}>
-            🔍 {lang === "hi" ? "दस्तावेज़ का विश्लेषण करें" : "Analyze Document"}
+            <Search size={15} aria-hidden="true" />
+            {lang === "hi" ? "दस्तावेज़ का विश्लेषण करें" : "Analyze Document"}
           </button>
 
           {/* Analysis Result */}
@@ -560,16 +622,21 @@ export default function HomePage() {
             <div style={{ marginTop: "1.5rem", borderTop: "1px solid var(--border-color)", paddingTop: "1.25rem" }}>
               <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", marginBottom: "1rem", flexWrap: "wrap" }}>
                 <span className="nm-badge nm-badge-verified">
-                  ✓ Classification: {docAnalysis.document_type}
+                  <CheckCircle size={11} aria-hidden="true" />
+                  Classification: {docAnalysis.document_type}
                 </span>
                 <span className="nm-badge nm-badge-outdated">
-                  🔒 PII Redacted: 1 Aadhaar Identifier Masked
+                  <Lock size={11} aria-hidden="true" />
+                  PII Redacted: 1 Aadhaar Identifier Masked
                 </span>
               </div>
 
               <div className="nm-grid-2">
                 <div className="nm-card-feature">
-                  <h4>👥 Extracted Parties & Metadata</h4>
+                  <h4 style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                    <Users size={15} aria-hidden="true" />
+                    Extracted Parties & Metadata
+                  </h4>
                   <ul style={{ listStyle: "none", marginTop: "0.5rem", fontSize: "0.9rem" }}>
                     <li><strong>Petitioner:</strong> {docAnalysis.parties.petitioner}</li>
                     <li><strong>Respondent:</strong> {docAnalysis.parties.respondent}</li>
@@ -579,7 +646,10 @@ export default function HomePage() {
                 </div>
 
                 <div className="nm-card-feature">
-                  <h4>📅 Extracted Deadlines</h4>
+                  <h4 style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                    <CalendarDays size={15} aria-hidden="true" />
+                    Extracted Deadlines
+                  </h4>
                   {userDeadlines.map((dl, idx) => (
                     <div key={idx} style={{ marginTop: "0.5rem", padding: "0.5rem", background: "var(--neutral-subtle)", borderRadius: "var(--radius-sm)" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -593,7 +663,8 @@ export default function HomePage() {
                   ))}
 
                   <button className="nm-btn nm-btn-emerald nm-btn-sm" style={{ marginTop: "0.75rem", width: "100%" }} onClick={handleExportICS}>
-                    📅 {lang === "hi" ? "कैलेंडर में जोड़ें (.ics डाउनलोड)" : "Add to Calendar (Export .ics)"}
+                    <CalendarDays size={13} aria-hidden="true" />
+                    {lang === "hi" ? "कैलेंडर में जोड़ें (.ics डाउनलोड)" : "Add to Calendar (Export .ics)"}
                   </button>
                 </div>
               </div>
@@ -608,7 +679,10 @@ export default function HomePage() {
       {activeTab === "generator" && (
         <section className="nm-workspace" aria-labelledby="generator-heading">
           <div className="nm-workspace-header">
-            <h2 id="generator-heading">✍️ {lang === "hi" ? "मेरा डाक्यूमेंट (Controlled Generator)" : "Mera Document (Controlled Generator)"}</h2>
+            <h2 id="generator-heading">
+              <FilePen size={20} aria-hidden="true" />
+              {lang === "hi" ? "मेरा डाक्यूमेंट (Controlled Generator)" : "Mera Document (Controlled Generator)"}
+            </h2>
             <p>
               {lang === "hi"
                 ? "आरटीआई, उपभोक्ता शिकायत या विधिक नोटिस का अनुमोदित प्रारूप बनाएं। कोई बनावटी तथ्य नहीं।"
@@ -619,16 +693,17 @@ export default function HomePage() {
           {/* Template Selection */}
           <div style={{ display: "flex", gap: "0.5rem", marginBottom: "1.5rem", flexWrap: "wrap" }}>
             {[
-              { id: "RTI_APPLICATION", label: "📋 RTI Application (Section 6(1))" },
-              { id: "CONSUMER_COMPLAINT", label: "🛒 Consumer Complaint (Section 35)" },
-              { id: "LEGAL_NOTICE_CHEQUE_BOUNCE", label: "💳 Cheque Bounce Notice (Section 138)" },
-              { id: "RENT_DISPUTE_REPLY", label: "🏠 Rent Dispute Reply (Section 106)" },
+              { id: "RTI_APPLICATION", label: "RTI Application (Section 6(1))", icon: <ClipboardList size={13} aria-hidden="true" /> },
+              { id: "CONSUMER_COMPLAINT", label: "Consumer Complaint (Section 35)", icon: <ShoppingCart size={13} aria-hidden="true" /> },
+              { id: "LEGAL_NOTICE_CHEQUE_BOUNCE", label: "Cheque Bounce Notice (Section 138)", icon: <FileText size={13} aria-hidden="true" /> },
+              { id: "RENT_DISPUTE_REPLY", label: "Rent Dispute Reply (Section 106)", icon: <Home size={13} aria-hidden="true" /> },
             ].map((t) => (
               <button
                 key={t.id}
                 className={`nm-btn ${selectedTemplate === t.id ? "nm-btn-primary" : "nm-btn-secondary"} nm-btn-sm`}
                 onClick={() => setSelectedTemplate(t.id)}
               >
+                {t.icon}
                 {t.label}
               </button>
             ))}
@@ -637,8 +712,9 @@ export default function HomePage() {
           <div className="nm-grid-2">
             {/* Slot Input Form */}
             <div>
-              <h3 style={{ fontSize: "1.05rem", marginBottom: "0.75rem", color: "var(--primary-navy)" }}>
-                📝 Fill Document Slots (विवरण दर्ज करें)
+              <h3 style={{ fontSize: "1.05rem", marginBottom: "0.75rem", color: "var(--primary-navy)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                <FilePen size={17} aria-hidden="true" />
+                Fill Document Slots (विवरण दर्ज करें)
               </h3>
 
               <div className="nm-form-group">
@@ -691,14 +767,16 @@ export default function HomePage() {
               </div>
 
               <button className="nm-btn nm-btn-emerald" style={{ width: "100%" }} onClick={handleGenerateDocument}>
-                ⚙️ {lang === "hi" ? "विधिक डाक्यूमेंट तैयार करें" : "Generate Legal Draft"}
+                <Settings size={15} aria-hidden="true" />
+                {lang === "hi" ? "विधिक डाक्यूमेंट तैयार करें" : "Generate Legal Draft"}
               </button>
             </div>
 
             {/* Live Draft Preview */}
             <div>
-              <h3 style={{ fontSize: "1.05rem", marginBottom: "0.75rem", color: "var(--primary-navy)" }}>
-                📄 Live Draft Preview
+              <h3 style={{ fontSize: "1.05rem", marginBottom: "0.75rem", color: "var(--primary-navy)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                <FileText size={17} aria-hidden="true" />
+                Live Draft Preview
               </h3>
 
               {generatedDoc ? (
@@ -721,19 +799,23 @@ export default function HomePage() {
 
                   <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
                     <button className="nm-btn nm-btn-primary nm-btn-sm" onClick={() => handleDownloadDoc("md")}>
-                      ⬇️ Download Markdown (.md)
+                      <Download size={13} aria-hidden="true" />
+                      Download Markdown (.md)
                     </button>
                     <button className="nm-btn nm-btn-secondary nm-btn-sm" onClick={() => handleDownloadDoc("txt")}>
-                      ⬇️ Download Text (.txt)
+                      <Download size={13} aria-hidden="true" />
+                      Download Text (.txt)
                     </button>
                     <button className="nm-btn nm-btn-secondary nm-btn-sm" onClick={() => handleDownloadDoc("html")}>
-                      ⬇️ Download HTML (.html)
+                      <Download size={13} aria-hidden="true" />
+                      Download HTML (.html)
                     </button>
                   </div>
                 </div>
               ) : (
-                <div style={{ padding: "3rem 1rem", textAlign: "center", color: "var(--text-muted)", background: "var(--neutral-subtle)", borderRadius: "var(--radius-sm)" }}>
-                  👈 Fill in the slots and click <strong>Generate Legal Draft</strong> to preview.
+                <div style={{ padding: "3rem 1rem", textAlign: "center", color: "var(--text-muted)", background: "var(--neutral-subtle)", borderRadius: "var(--radius-sm)", display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
+                  <ArrowRight size={24} style={{ opacity: 0.4 }} aria-hidden="true" />
+                  Fill in the slots and click <strong>Generate Legal Draft</strong> to preview.
                 </div>
               )}
             </div>
@@ -747,7 +829,10 @@ export default function HomePage() {
       {activeTab === "escalation" && (
         <section className="nm-workspace" aria-labelledby="escalation-heading">
           <div className="nm-workspace-header">
-            <h2 id="escalation-heading">🏛️ {lang === "hi" ? "न्याय सहायता व हेल्पलाइन (Legal Aid & Helpline)" : "Nyaya Sahayata (Legal Aid & Escalation)"}</h2>
+            <h2 id="escalation-heading">
+              <Landmark size={20} aria-hidden="true" />
+              {lang === "hi" ? "न्याय सहायता व हेल्पलाइन (Legal Aid & Helpline)" : "Nyaya Sahayata (Legal Aid & Escalation)"}
+            </h2>
             <p>
               {lang === "hi"
                 ? "धारा 12 विधिक सेवा प्राधिकरण अधिनियम 1987 के तहत निःशुल्क सरकारी वकील एवं टेली-लॉ परामर्श खोजें।"
@@ -758,8 +843,9 @@ export default function HomePage() {
           <div className="nm-grid-2">
             {/* Left: Jurisdiction Directory */}
             <div>
-              <h3 style={{ fontSize: "1.05rem", marginBottom: "0.75rem", color: "var(--primary-navy)" }}>
-                📍 Locate Legal Aid Authority (DLSA / SLSA)
+              <h3 style={{ fontSize: "1.05rem", marginBottom: "0.75rem", color: "var(--primary-navy)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                <MapPin size={17} aria-hidden="true" />
+                Locate Legal Aid Authority (DLSA / SLSA)
               </h3>
 
               <div className="nm-form-group">
@@ -781,7 +867,10 @@ export default function HomePage() {
 
               {/* Direct Authority Card */}
               <div className="nm-card-feature" style={{ borderLeft: "4px solid var(--primary-navy)", marginBottom: "1rem" }}>
-                <h4>🏛️ {selectedState === "DELHI" ? "South DLSA (Saket Courts)" : `${selectedState} State Legal Services Authority`}</h4>
+                <h4 style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                  <Landmark size={15} aria-hidden="true" />
+                  {selectedState === "DELHI" ? "South DLSA (Saket Courts)" : `${selectedState} State Legal Services Authority`}
+                </h4>
                 <p style={{ fontSize: "0.88rem", color: "var(--text-muted)", marginTop: "0.35rem" }}>
                   <strong>Address:</strong> {selectedState === "DELHI" ? "Saket District Court Complex, New Delhi" : "High Court Building Complex"}
                 </p>
@@ -791,7 +880,8 @@ export default function HomePage() {
 
                 <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.75rem", flexWrap: "wrap" }}>
                   <a href="tel:15100" className="nm-btn nm-btn-emerald nm-btn-sm">
-                    📞 Call 15100 (Toll-Free)
+                    <Phone size={13} aria-hidden="true" />
+                    Call 15100 (Toll-Free)
                   </a>
                   <a
                     href={`https://www.google.com/maps/search/?api=1&query=${selectedState}+Legal+Services+Authority`}
@@ -799,14 +889,18 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     className="nm-btn nm-btn-secondary nm-btn-sm"
                   >
-                    📍 Open in Maps
+                    <MapPin size={13} aria-hidden="true" />
+                    Open in Maps
                   </a>
                 </div>
               </div>
 
               {/* Tele-Law Card */}
               <div className="nm-card-feature" style={{ borderLeft: "4px solid var(--emerald-green)" }}>
-                <h4>💻 Tele-Law Video Consultation</h4>
+                <h4 style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                  <Monitor size={15} aria-hidden="true" />
+                  Tele-Law Video Consultation
+                </h4>
                 <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", marginTop: "0.35rem" }}>
                   Get pre-litigation advice via video conferencing directly from panel advocates at your nearest Common Service Centre (CSC).
                 </p>
@@ -817,19 +911,21 @@ export default function HomePage() {
                   className="nm-btn nm-btn-secondary nm-btn-sm"
                   style={{ marginTop: "0.5rem" }}
                 >
-                  🌐 Visit Tele-Law Portal (tele-law.in)
+                  <Globe size={13} aria-hidden="true" />
+                  Visit Tele-Law Portal (tele-law.in)
                 </a>
               </div>
             </div>
 
             {/* Right: Section 12 Eligibility Calculator */}
             <div>
-              <h3 style={{ fontSize: "1.05rem", marginBottom: "0.75rem", color: "var(--primary-navy)" }}>
-                ⚖️ Free Legal Aid Eligibility Check (Section 12 LSAA)
+              <h3 style={{ fontSize: "1.05rem", marginBottom: "0.75rem", color: "var(--primary-navy)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                <Scale size={17} aria-hidden="true" />
+                Free Legal Aid Eligibility Check (Section 12 LSAA)
               </h3>
 
               <div style={{ background: "var(--neutral-subtle)", padding: "1rem", borderRadius: "var(--radius-sm)", border: "1px solid var(--border-color)", marginBottom: "1rem" }}>
-                <p style={{ fontSize: "0.88rem", marginBottom: "0.75rem", fontWeight: 700 }}>
+                <p style={{ fontSize: "0.88rem", marginBottom: "0.75rem", fontWeight: 600 }}>
                   Do you fall under any of the statutory categories?
                 </p>
 
@@ -889,18 +985,24 @@ export default function HomePage() {
 
                 {/* Eligibility Result Banner */}
                 {isEligible ? (
-                  <div style={{ background: "var(--emerald-light)", border: "1px solid #a7f3d0", padding: "0.75rem", borderRadius: "var(--radius-sm)", color: "var(--emerald-green)" }}>
-                    <strong>✅ 100% Eligible for Free Legal Aid</strong>
-                    <p style={{ fontSize: "0.82rem", marginTop: "0.25rem" }}>
-                      You qualify for a free government advocate, drafting assistance, and court fee waiver under Section 12 of LSAA 1987.
-                    </p>
+                  <div style={{ background: "var(--emerald-light)", border: "1px solid #a7f3d0", padding: "0.75rem", borderRadius: "var(--radius-sm)", color: "var(--emerald-green)", display: "flex", gap: "0.5rem", alignItems: "flex-start" }}>
+                    <ShieldCheck size={18} style={{ flexShrink: 0, marginTop: "1px" }} aria-hidden="true" />
+                    <div>
+                      <strong>100% Eligible for Free Legal Aid</strong>
+                      <p style={{ fontSize: "0.82rem", marginTop: "0.25rem" }}>
+                        You qualify for a free government advocate, drafting assistance, and court fee waiver under Section 12 of LSAA 1987.
+                      </p>
+                    </div>
                   </div>
                 ) : (
-                  <div style={{ background: "var(--warning-light)", border: "1px solid #fde68a", padding: "0.75rem", borderRadius: "var(--radius-sm)", color: "var(--warning-amber)" }}>
-                    <strong>ℹ️ Income above standard ceiling</strong>
-                    <p style={{ fontSize: "0.82rem", marginTop: "0.25rem" }}>
-                      You may still avail nominal fee mediation at Lok Adalat or consultation via Tele-Law.
-                    </p>
+                  <div style={{ background: "var(--warning-light)", border: "1px solid #fde68a", padding: "0.75rem", borderRadius: "var(--radius-sm)", color: "var(--warning-amber)", display: "flex", gap: "0.5rem", alignItems: "flex-start" }}>
+                    <Info size={18} style={{ flexShrink: 0, marginTop: "1px" }} aria-hidden="true" />
+                    <div>
+                      <strong>Income above standard ceiling</strong>
+                      <p style={{ fontSize: "0.82rem", marginTop: "0.25rem" }}>
+                        You may still avail nominal fee mediation at Lok Adalat or consultation via Tele-Law.
+                      </p>
+                    </div>
                   </div>
                 )}
               </div>
