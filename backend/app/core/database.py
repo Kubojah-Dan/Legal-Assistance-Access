@@ -12,11 +12,26 @@ from app.core.config import get_settings
 settings = get_settings()
 
 # Determine database URL and connect args
-DATABASE_URL = settings.DATABASE_URL
+raw_db_url = settings.DATABASE_URL
 connect_args: dict = {}
 
-if settings.USE_SQLITE_FALLBACK or "sqlite" in DATABASE_URL:
-    # Use SQLite for development / local testing if Postgres is not configured
+is_postgres = raw_db_url.startswith("postgresql") or raw_db_url.startswith("postgres")
+
+if is_postgres and not ("sqlite" in raw_db_url) and not settings.USE_SQLITE_FALLBACK:
+    # Normalize Postgres protocol for asyncpg (e.g. Supabase connection URLs)
+    if raw_db_url.startswith("postgres://"):
+        DATABASE_URL = raw_db_url.replace("postgres://", "postgresql+asyncpg://", 1)
+    elif raw_db_url.startswith("postgresql://") and not raw_db_url.startswith("postgresql+asyncpg://"):
+        DATABASE_URL = raw_db_url.replace("postgresql://", "postgresql+asyncpg://", 1)
+    else:
+        DATABASE_URL = raw_db_url
+
+    # Clean query params incompatible with asyncpg if present
+    if "?sslmode=" in DATABASE_URL:
+        base_url = DATABASE_URL.split("?")[0]
+        DATABASE_URL = base_url
+else:
+    # Use SQLite for development / local testing
     sqlite_path = settings.SQLITE_DB_PATH.replace("\\", "/")
     DATABASE_URL = f"sqlite+aiosqlite:///{sqlite_path}"
     connect_args = {"check_same_thread": False}
