@@ -38,11 +38,10 @@ class Settings(BaseSettings):
     # AI & Providers
     LLM_PROVIDER: str = "mock"
     PRIMARY_MODEL: str = "gemini-2.0-flash"
-    FALLBACK_MODEL: str = "gpt-4o-mini"
+    FALLBACK_MODEL: str = "llama3-70b-8192"  # Groq-hosted fallback
     FAST_MODEL: str = "gemini-2.0-flash-lite"
-    OPENAI_API_KEY: str = ""
     GEMINI_API_KEY: str = ""
-    ANTHROPIC_API_KEY: str = ""
+    GROQ_API_KEY: str = ""
     EMBEDDING_PROVIDER: str = "mock"
     OCR_PROVIDER: str = "mock"
 

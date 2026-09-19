@@ -2,6 +2,11 @@
 NyayaMitra Multi-Tier Model Router & Economic Sustainability Engine
 Routes legal tasks to appropriate cost/performance model tiers, enforces timeout budgets,
 executes fallback chains on provider outage, and tracks real-time token/rupee costs.
+
+Fallback chain per tier:
+  Primary  →  Gemini (gemini-2.0-flash / gemini-2.0-pro / gemini-1.5-pro)
+  Fallback →  Groq   (llama3-70b-8192 / llama3-70b-8192 / mixtral-8x7b-32768)
+  Last resort → Deterministic offline baseline
 """
 
 from datetime import datetime, timezone
@@ -29,7 +34,7 @@ DEFAULT_TIER_CONFIGS: dict[str, ModelTierConfig] = {
     "FAST": ModelTierConfig(
         tier_name="FAST",
         primary_model="gemini-2.0-flash",
-        fallback_model="claude-3-5-haiku",
+        fallback_model="llama3-70b-8192",          # Groq fallback
         timeout_seconds=3.0,
         input_cost_per_1m_tokens_inr=8.50,    # ~ $0.10 / 1M tokens
         output_cost_per_1m_tokens_inr=34.00,  # ~ $0.40 / 1M tokens
@@ -38,7 +43,7 @@ DEFAULT_TIER_CONFIGS: dict[str, ModelTierConfig] = {
     "BALANCED": ModelTierConfig(
         tier_name="BALANCED",
         primary_model="gemini-2.0-pro",
-        fallback_model="gpt-4o-mini",
+        fallback_model="llama3-70b-8192",          # Groq fallback
         timeout_seconds=6.0,
         input_cost_per_1m_tokens_inr=17.00,
         output_cost_per_1m_tokens_inr=68.00,
@@ -47,7 +52,7 @@ DEFAULT_TIER_CONFIGS: dict[str, ModelTierConfig] = {
     "REASONING": ModelTierConfig(
         tier_name="REASONING",
         primary_model="gemini-1.5-pro",
-        fallback_model="claude-3-5-sonnet",
+        fallback_model="mixtral-8x7b-32768",       # Groq fallback (high-context)
         timeout_seconds=12.0,
         input_cost_per_1m_tokens_inr=105.00,
         output_cost_per_1m_tokens_inr=420.00,
